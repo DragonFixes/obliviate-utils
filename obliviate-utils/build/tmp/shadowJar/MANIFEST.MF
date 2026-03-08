@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: placeholder-4.0.2.jar string-4.0.2.jar version-detection-4.0
+ .2.jar database-4.0.2.jar
+

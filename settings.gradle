@@ -1,8 +1,9 @@
 rootProject.name = 'obliviate-utils'
-include 'placeholder'
-include 'string'
-include 'version-detection'
-include 'database'
 
-include 'obliviate-utils'
+include ':placeholder'
+include ':string'
+include ':version-detection'
+include ':database'
+
+include ':obliviate-utils'
 
