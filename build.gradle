@@ -42,7 +42,7 @@ subprojects {
         }
 
         // NMS
-        maven { url 'https://repo.codemc.org/repository/nms/' }
+        maven { url 'https://repo.codemc.io/repository/nms/' }
 
         // CodeMC
         maven { url "https://repo.codemc.io/repository/maven-releases/" }
@@ -55,7 +55,7 @@ subprojects {
         // Streamline Essentials repository
         maven {
             name = "streamline-essentials"
-            url = "https://repo.codemc.org/repository/streamline-essentials/"
+            url = "https://repo.codemc.io/repository/streamline-essentials/"
         }
     }
 
