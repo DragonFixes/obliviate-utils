@@ -5,8 +5,12 @@ plugins {
 
 group 'mc.obliviate'
 version '4.0.2'
-sourceCompatibility = 8
 compileJava.options.encoding = 'UTF-8'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 subprojects {
     apply plugin: 'java'
@@ -14,14 +18,46 @@ subprojects {
 
     group rootProject.group
     version rootProject.version
-    sourceCompatibility = 8
     compileJava.options.encoding = 'UTF-8'
 
+    java {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
     repositories {
+        // Maven Defaults
+        mavenCentral()
         mavenLocal()
         maven { url 'https://repo.maven.apache.org/maven2/' }
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+
+        // Spigot / Bukkit
+        maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url "https://oss.sonatype.org/content/repositories/central" }
+
+        // Paper / Velocity
+        maven {
+            name = 'papermc'
+            url = 'https://repo.papermc.io/repository/maven-public/'
+        }
+
+        // NMS
         maven { url 'https://repo.codemc.org/repository/nms/' }
+
+        // CodeMC
+        maven { url "https://repo.codemc.io/repository/maven-releases/" }
+        maven { url "https://repo.codemc.io/repository/maven-snapshots/" }
+
+        // OpenCollab
+        maven { url 'https://repo.opencollab.dev/maven-snapshots/' }
+        maven { url 'https://repo.opencollab.dev/maven-releases/'}
+
+        // Streamline Essentials repository
+        maven {
+            name = "streamline-essentials"
+            url = "https://repo.codemc.org/repository/streamline-essentials/"
+        }
     }
 
     publishing {
@@ -34,4 +70,9 @@ subprojects {
             }
         }
     }
+}
+
+wrapper {
+    gradleVersion = '9.3.1'
+    distributionType = Wrapper.DistributionType.ALL
 }
