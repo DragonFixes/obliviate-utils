@@ -12,41 +12,42 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-allprojects {
-    apply plugin: 'java'
-    apply plugin: 'maven-publish'
-
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                groupId project.group
-                artifactId "$project.name"
-                version project.version
-
-                from components.java
-            }
-        }
-
-        repositories {
-            maven {
-                url = "https://repo.codemc.io/repository/streamline-essentials/"
-
-                def mavenUsername = System.getenv("JENKINS_NEXUS_USERNAME")
-                def mavenPassword = System.getenv("JENKINS_NEXUS_PASSWORD")
-
-                if (mavenUsername != null && mavenPassword != null) {
-                    credentials {
-                        username = mavenUsername
-                        password = mavenPassword
-                    }
-                }
-            }
-        }
-    }
-}
+//allprojects {
+//    apply plugin: 'java'
+//    apply plugin: 'maven-publish'
+//
+//    publishing {
+//        publications {
+//            maven(MavenPublication) {
+//                groupId project.group
+//                artifactId "$project.name"
+//                version project.version
+//
+//                from components.java
+//            }
+//        }
+//
+//        repositories {
+//            maven {
+//                url = "https://repo.codemc.io/repository/streamline-essentials/"
+//
+//                def mavenUsername = System.getenv("JENKINS_NEXUS_USERNAME")
+//                def mavenPassword = System.getenv("JENKINS_NEXUS_PASSWORD")
+//
+//                if (mavenUsername != null && mavenPassword != null) {
+//                    credentials {
+//                        username = mavenUsername
+//                        password = mavenPassword
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'maven-publish'
 
     group rootProject.group
     version rootProject.version
@@ -89,6 +90,34 @@ subprojects {
         maven {
             name = "streamline-essentials"
             url = "https://repo.codemc.org/repository/streamline-essentials/"
+        }
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId project.group
+                artifactId "$project.name"
+                version project.version
+
+                from components.java
+            }
+        }
+
+        repositories {
+            maven {
+                url = "https://repo.codemc.io/repository/streamline-essentials/"
+
+                def mavenUsername = System.getenv("JENKINS_NEXUS_USERNAME")
+                def mavenPassword = System.getenv("JENKINS_NEXUS_PASSWORD")
+
+                if (mavenUsername != null && mavenPassword != null) {
+                    credentials {
+                        username = mavenUsername
+                        password = mavenPassword
+                    }
+                }
+            }
         }
     }
 }
