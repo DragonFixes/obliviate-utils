@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version '8.10.2'
+    id 'com.gradleup.shadow' version '8.3.6'
+    id 'maven-publish'
+}
+
+dependencies {
+    shadow implementation(project(":placeholder"))
+    shadow implementation(project(":database"))
+    shadow implementation(project(":string"))
+    shadow implementation(project(":version-detection"))
+}
+
+shadowJar {
+}
